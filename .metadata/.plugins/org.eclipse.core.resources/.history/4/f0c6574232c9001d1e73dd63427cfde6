@@ -1,0 +1,16 @@
+package Modelo;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class TestTrabajoPracticoIntegrador {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		for(String linea:Files.readAllLines(Paths.get("src\\archivos\\resultados.txt"))) {
+			
+		}
+		;
+	}
+
+}

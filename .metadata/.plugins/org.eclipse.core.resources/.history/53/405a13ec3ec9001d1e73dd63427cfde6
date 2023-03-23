@@ -1,0 +1,64 @@
+package Modelo;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+
+public class Resultados extends Partido{
+	
+	ArrayList<Partido> partidos = new ArrayList<>();
+	private int[] resultados=new int[3];
+	private String ruta;
+
+	public Resultados(Equipo local, Equipo visitante,String ruta) {
+		super(local, visitante);
+		// TODO Auto-generated constructor stub
+		this.ruta=ruta;
+	}
+
+	public int[] getResultados() {
+		return resultados;
+	}
+
+	public void setResultados(int[] resultados) {
+		this.resultados = resultados;
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
+	public ArrayList<Partido> getPartidos() {
+		return partidos;
+	}
+
+	public void setPartidos(ArrayList<Partido> partidos) {
+		this.partidos = partidos;
+	}
+	
+	public ArrayList<Partido> setResultados(String ruta){
+		try {
+			for(String linea:Files.readAllLines(Paths.get(ruta))) {
+				int[] pronostico=new int[2];
+				String l=linea.split(";")[0];
+				pronostico[0]=Integer.valueOf(linea.split(";")[1]);
+				pronostico[1]=Integer.valueOf(linea.split(";")[2]);
+				String v=linea.split(";")[3];
+				Partido partido=generar_partido(l,v,pronostico);
+				this.partidos.add(partido);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.partidos;
+		
+	}
+	
+
+}

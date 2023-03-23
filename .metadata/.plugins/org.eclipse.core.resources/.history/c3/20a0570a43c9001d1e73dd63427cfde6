@@ -1,0 +1,22 @@
+package Modelo;
+
+import java.util.ArrayList;
+
+public class TestTrabajoPracticoIntegrador {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Resultados resultado=new Resultados("src\\Archivos\\resultados.txt");
+		ArrayList<Partido> resultadosDeLaFecha=resultado.setResultados();
+		System.out.println("Resultados de la Fecha");
+		resultado.mostrar_Resultados();
+		
+		Usuario user1=new Usuario(1,"Celeste Severich","41578642");
+		ArrayList<Partido> pronosticoDeUser1=user1.setPartidos("src\\Archivos\\pronosticos.txt");
+		System.out.println("Pronostico de "+user1.getNombreCompleto());
+		user1.mostrar_Pronosticos();
+		
+		
+	}
+
+}

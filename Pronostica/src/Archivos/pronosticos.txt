@@ -1,0 +1,2 @@
+Argentina;true;false;false;Arabia Saudita;
+Polonia;false;true;false;Mexico;

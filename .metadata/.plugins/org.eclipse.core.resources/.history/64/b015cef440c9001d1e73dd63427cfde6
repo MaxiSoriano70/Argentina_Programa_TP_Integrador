@@ -1,0 +1,58 @@
+package Modelo;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+
+public class Resultados{
+	
+	ArrayList<Partido> partidos = new ArrayList<>();
+	private String ruta;
+
+	public Resultados(String ruta) {
+		this.ruta=ruta;
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
+	public ArrayList<Partido> getPartidos() {
+		return partidos;
+	}
+
+	public void setPartidos(ArrayList<Partido> partidos) {
+		this.partidos = partidos;
+	}
+	
+	public ArrayList<Partido> setResultados(String ruta){
+		try {
+			for(String linea:Files.readAllLines(Paths.get(ruta))) {
+				String local=linea.split(";")[0];
+				String visitante=linea.split(";")[3];
+				Partido partido=new Partido(local,visitante);
+				int golesLocal=Integer.valueOf(linea.split(";")[1]);
+				int golesVisitante=Integer.valueOf(linea.split(";")[2]);
+				if(golesLocal>golesVisitante) {
+					partido.setResultado(Resultado.LOCAL);
+				}else if(golesLocal<golesVisitante) {
+					partido.setResultado(Resultado.VISITANTE);
+				}
+				else {
+					partido.setResultado(Resultado.EMPATE);
+				}
+				this.partidos.add(partido);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.partidos;
+		
+	}
+}

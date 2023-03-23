@@ -1,0 +1,31 @@
+package Modelo;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+
+public class Usuario extends Persona{
+	
+	ArrayList<Partido> Partidos = new ArrayList<>();
+
+	public Usuario(int idPersona, String nombreCompleto, String dni) {
+		super(idPersona, nombreCompleto, dni);
+	}
+	
+	public ArrayList<Partido> Partidos(String ruta){
+		try {
+			for(String linea:Files.readAllLines(Paths.get(ruta))) {
+				System.out.println(linea.split(";")[0]);
+				System.out.println(linea.split(";")[1]);
+				System.out.println(linea.split(";")[2]);
+				System.out.println(linea.split(";")[3]);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+}

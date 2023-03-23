@@ -5,11 +5,9 @@ public class Partido {
 	private Equipo visitante;
 	private Resultado resultado;
 	
-	public Partido(Equipo local, Equipo visitante, Resultado resultado) {
-		super();
+	public Partido(Equipo local, Equipo visitante) {
 		this.local = local;
 		this.visitante = visitante;
-		this.resultado = resultado;
 	}
 
 	public Equipo getLocal() {

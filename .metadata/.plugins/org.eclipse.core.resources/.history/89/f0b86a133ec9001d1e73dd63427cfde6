@@ -1,0 +1,21 @@
+package Modelo;
+
+public class Resultados extends Partido{
+	private int[] resultados=new int[3];
+	private String ruta;
+
+	public Resultados(Equipo local, Equipo visitante,String ruta) {
+		super(local, visitante);
+		// TODO Auto-generated constructor stub
+	}
+
+	public int[] getResultados() {
+		return resultados;
+	}
+
+	public void setResultados(int[] resultados) {
+		this.resultados = resultados;
+	}
+	
+
+}

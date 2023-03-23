@@ -1,6 +1,0 @@
-
-public class Persona {
-	private int idPersona;
-	private String nombreCompleto;
-	private String dni;
-}
